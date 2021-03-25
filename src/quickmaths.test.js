@@ -9,5 +9,5 @@ test('test multiplication', () => {
 
 test('test powers', () => {
     let quickmaths = new QuickMaths()
-    expect(quickmaths.Power(2,3)).toBe(8)
+    expect(quickmaths.Power(2,3)).toBe(6)
 });
