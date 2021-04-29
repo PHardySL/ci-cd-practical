@@ -76,6 +76,8 @@ jobs:
 
 workflows:
   orb-free-workflow:
+    orbs:
+      browser-tools: circleci/browser-tools@1.1.0
     jobs:
       - test
       - staging
