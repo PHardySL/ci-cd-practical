@@ -42,7 +42,7 @@ jobs:
           command: npx surge build/ https://philcicd-staging.surge.sh
   uitest:
     docker:
-      - image: cimg/node:14.15.4-browser
+      - image: cimg/node:14.15.4-browsers
     steps:
       - checkout
       - restore_cache:
