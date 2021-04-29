@@ -1,0 +1,10 @@
+{
+  "setupTestFrameworkScriptFile": "./setup.js",
+  "testMatch": [
+    "**/specs/**/*.js"
+  ],
+  "transform": {
+    "\\.js$": "react-scripts/config/jest/babelTransform"
+  },
+  "reporters": [ "default", "jest-junit" ]
+}
