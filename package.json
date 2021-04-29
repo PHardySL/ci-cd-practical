@@ -16,7 +16,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "e2e": "cross-env JEST_JUNIT_OUTPUT=\"./test-results/acceptance/results.xml\" cross-env BASE_URL=\"'https://philcicd-staging.surge.sh'\" jest -c e2e/jestConfig.json --runInBand"
+    "e2e": "cross-env JEST_JUNIT_OUTPUT=\"./test-results/acceptance/results.xml\" cross-env BASE_URL=\"'https://philcicd-staging.surge.sh'\" jest -c e2e/jestConfig.json --runInBand",
+    "performance": "lighthouse https://philcicd-staging.surge.sh --chrome-flags=\"--headless\" --output json --output html --output-path=./ci-cd-practical && node ./scripts/verify-performance-results.js ci-cd-practical.report.json"
   },
   "eslintConfig": {
     "extends": [
@@ -39,6 +40,7 @@
   "devDependencies": {
     "cross-env": "7.0.3",
     "jest-junit": "12.0.0",
+    "lighthouse": "7.4.0",
     "puppeteer": "9.0.0",
     "surge": "^0.23.0"
   }
