@@ -45,4 +45,4 @@ workflows:
   orb-free-workflow:
     jobs:
       - test
-      #- staging
+      - staging
