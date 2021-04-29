@@ -79,6 +79,9 @@ workflows:
   orb-free-workflow:
     jobs:
       - test
-      - staging
-      - uitest
-      - perftest
+      - staging:
+        requires: -test
+      - uitest:
+        requires: -staging
+      - perftest:
+        requires: -staging
