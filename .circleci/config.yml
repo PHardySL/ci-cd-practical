@@ -89,7 +89,7 @@ jobs:
           command: yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
       - run:
           name: deploy to production
-          command: npx surge build/ https://philcicd-production.surge.sh
+          command: npx surge build/ https://philcicd.surge.sh
 
 workflows:
   orb-free-workflow:
