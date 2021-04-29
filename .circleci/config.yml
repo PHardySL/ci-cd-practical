@@ -39,7 +39,7 @@ jobs:
           command: yarn build
       - run:
           name: surge
-          command: npx surge build/ https://philcicd-staging.surge.shh
+          command: npx surge build/ https://philcicd-staging.surge.sh
 
 workflows:
   orb-free-workflow:
