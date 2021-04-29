@@ -40,9 +40,26 @@ jobs:
       - run:
           name: surge
           command: npx surge build/ https://philcicd-staging.surge.sh
+  uitest:
+    docker:
+      - image: cimg/node:14.15.4-browser
+    steps:
+      - checkout
+      - restore_cache:
+          # See the configuration reference documentation for more details on using restore_cache and save_cache steps
+          # https://circleci.com/docs/2.0/configuration-reference/?section=reference#save_cache
+          keys:
+            - yarn-packages-{{ .Branch }}-{{checksum "yarn.lock"}}
+      - run:
+          name: install
+          command: yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
+      - run:
+          name: ui test
+          command: yarn e2e
 
 workflows:
   orb-free-workflow:
     jobs:
       - test
       - staging
+      - uitest
