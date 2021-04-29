@@ -21,9 +21,12 @@ jobs:
       - run:
           name: Run Tests
           command: npm run test
+  build:
+    commands:
+      - npm run build
+
   staging:
     production:
-      branch: main
       commands:
         - surge --project build/ --philcicd-staging.surge.sh
 
@@ -31,4 +34,5 @@ workflows:
   orb-free-workflow:
     jobs:
       - test
+      - build
       - staging
