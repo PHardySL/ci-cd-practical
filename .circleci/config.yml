@@ -22,13 +22,23 @@ jobs:
           name: Run Tests
           command: npm run test
   build:
-    commands:
-      - npm run build
+    docker:
+      - image: cimg/node:14.15.4
+    steps:
+      - checkout
+      - run:
+          name: npm build
+          command: npm run build
 
   staging:
-    production:
-      commands:
-        - surge --project build/ --philcicd-staging.surge.sh
+    docker:
+      - image: cimg/node:14.15.4
+    steps:
+      - checkout
+      - run:
+          name: surge
+          command:
+        - npx surge --project build/ --philcicd-staging.surge.sh
 
 workflows:
   orb-free-workflow:
