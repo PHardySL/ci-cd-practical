@@ -107,8 +107,11 @@ workflows:
       - perftest:
           requires:
             - staging
-      - production_deploy:
+      - hold_production_deploy:
           type: approval
           requires:
             - perftest
             - uitest
+      - production:
+          requires:
+            - hold_production_deploy
