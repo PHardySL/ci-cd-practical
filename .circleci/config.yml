@@ -60,6 +60,7 @@ jobs:
     docker:
       - image: cimg/node:14.15.4-browsers
     steps:
+      - browser-tools/install-browser-tools
       - checkout
       - restore_cache:
           # See the configuration reference documentation for more details on using restore_cache and save_cache steps
