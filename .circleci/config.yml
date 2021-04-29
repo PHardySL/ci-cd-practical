@@ -74,6 +74,22 @@ jobs:
       - run:
           name: performance test
           command: yarn performance
+  production_deploy:
+    docker:
+      - image: cimg/node:14.15.4
+    steps:
+      - checkout
+      - restore_cache:
+          # See the configuration reference documentation for more details on using restore_cache and save_cache steps
+          # https://circleci.com/docs/2.0/configuration-reference/?section=reference#save_cache
+          keys:
+            - yarn-packages-{{ .Branch }}-{{checksum "yarn.lock"}}
+      - run:
+          name: install
+          command: yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
+      - run:
+        name: deploy to production
+        command: npx surge build/ https://philcicd-production.surge.sh
 
 workflows:
   orb-free-workflow:
@@ -88,3 +104,7 @@ workflows:
       - perftest:
           requires:
             - staging
+      - production_deploy:
+        type: approval
+        requires: -perftest
+          -uitest
