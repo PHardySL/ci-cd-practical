@@ -80,8 +80,11 @@ workflows:
     jobs:
       - test
       - staging:
-        requires: -test
+          requires:
+            - test
       - uitest:
-        requires: -staging
+          requires:
+            - staging
       - perftest:
-        requires: -staging
+          requires:
+            - staging
