@@ -1,6 +1,8 @@
 version: 2.1
 
 jobs:
+  orbs:
+    browser-tools: circleci/browser-tools@1.1.0
   test:
     docker:
       - image: cimg/node:14.15.4
@@ -76,8 +78,6 @@ jobs:
 
 workflows:
   orb-free-workflow:
-    orbs:
-      browser-tools: circleci/browser-tools@1.1.0
     jobs:
       - test
       - staging
