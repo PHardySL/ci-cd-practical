@@ -36,7 +36,7 @@ it("displays the header welcome message", async () => {
     (el) => el.textContent
   );
   expect(welcomeMessage).toEqual(
-    "Edit src/App.js and save to reload. By Phil :)"
+    "Edit src/App.js and save to reload. By Phil :) :)"
   );
 });
 
