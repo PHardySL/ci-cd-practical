@@ -88,6 +88,9 @@ jobs:
           name: install
           command: yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
       - run:
+          name: yarn build
+          command: yarn build
+      - run:
           name: deploy to production
           command: npx surge build/ https://philcicd.surge.sh
 
